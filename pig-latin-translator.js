@@ -63,21 +63,16 @@ for (let i = 0; i < arrayAngabe.length; i++) {
     isUppercase = false;
   }
 
-  // console.log(arrayWord);
-
   for (let i = 0; i < arrayWord.length; i++) {
     let isConsonantLetter = false;
     let isVowelLetter = false;
 
-    let test1 = vowelLetter.some((letter) => letter === arrayWord[0])
+    vowelLetter.some((letter) => letter === arrayWord[0])
       ? (isVowelLetter = true)
       : (isVowelLetter = false);
-    let test2 = consonantLetter.some((letter) => letter === arrayWord[0])
+    consonantLetter.some((letter) => letter === arrayWord[0])
       ? (isConsonantLetter = true)
       : (isConsonantLetter = false);
-
-    // console.log("test1 is ", test1);
-    // console.log("test2 is ", test2);
 
     if (count > 1) {
       isUppercase = false;
