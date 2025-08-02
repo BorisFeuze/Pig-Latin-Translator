@@ -1,10 +1,10 @@
 const args = process.argv.slice(2);
 
-// if (args.length < 2) {
-//   console.error("Please provide two words to be able to play");
-//   // return;
-//   process.exit(1);
-// }
+if (args.length < 2) {
+  console.error("Please provide two words to be able to play");
+  // return;
+  process.exit(1);
+}
 
 let angabe1 = args[0].toLowerCase().trim();
 let angabe2 = args[1].toLowerCase().trim();
@@ -39,68 +39,73 @@ const consonantLetter = [
 const vowelLetter = ["a", "e", "i", "o", "u"];
 
 const arrayAngabe = angabe1.split(" ");
-// console.log(arrayAngabe);
+console.log(arrayAngabe);
 
 let result = [];
-
+let temporalyWord = [];
 let temporalyResult = [];
-// let temporalyResult2 = [];
+let count = 0;
+let countWord = 0;
 
 for (let i = 0; i < arrayAngabe.length; i++) {
   let word = arrayAngabe[i];
-
   let arrayWord = Array.from(word);
-
   let firstLetterWord = [];
-  let secondLetterWord = [];
 
-  console.log(arrayWord);
+  let isUppercase;
+
+  count = 0;
+
+  if (countWord < 2) {
+    isUppercase = true;
+    countWord += 1;
+  } else {
+    isUppercase = false;
+  }
+
+  // console.log(arrayWord);
 
   for (let i = 0; i < arrayWord.length; i++) {
     let isConsonantLetter = false;
     let isVowelLetter = false;
 
-    vowelLetter.some((letter) => {
-      return console.log(letter === arrayWord[0], arrayWord[0]);
-    })
+    let test1 = vowelLetter.some((letter) => letter === arrayWord[0])
       ? (isVowelLetter = true)
       : (isVowelLetter = false);
-    consonantLetter.some((letter) => letter === arrayWord[0])
+    let test2 = consonantLetter.some((letter) => letter === arrayWord[0])
       ? (isConsonantLetter = true)
       : (isConsonantLetter = false);
 
-    console.log(isVowelLetter);
-    console.log(isVowelLetter);
+    // console.log("test1 is ", test1);
+    // console.log("test2 is ", test2);
 
-    if ((isVowelLetter = false)) {
-      temporalyResult.push(arrayWord.slice().join("") + angabe2);
-      console.log(temporalyResult);
-    } else if (isConsonantLetter) {
+    if (count > 1) {
+      isUppercase = false;
+    }
+
+    if (isConsonantLetter) {
       firstLetterWord = arrayWord.shift();
-      // console.log(arrayWord);
-
-      if ((isConsonantLetter = false)) {
-        secondLetterWord = arrayWord.shift();
-      }
+      count += 1;
 
       if (firstLetterWord) {
-        for (let i = 0; i < firstLetterWord.length; i++) {
-          arrayWord.push(firstLetterWord[i]);
-        }
-
-        for (let i = 0; i < secondLetterWord.length; i++) {
-          arrayWord.push(secondLetterWord[i]);
-        }
+        arrayWord.push(firstLetterWord[i]);
       }
-      console.log(arrayWord);
-      let x = arrayWord.join("");
-
-      console.log(x);
-      temporalyResult.push(arrayWord.join("") + angabe2);
-      console.log(temporalyResult);
-      // console.log(temporalyResult1);
+      temporalyWord = arrayWord.join("");
+      // console.log(temporalyWord);
+    } else if (isVowelLetter) {
+      if (isUppercase) {
+        arrayWord.splice(0, 0, arrayWord.shift().toUpperCase());
+        temporalyWord = arrayWord.join("");
+      } else {
+        // console.log(arrayWord);
+        temporalyWord = arrayWord.join("");
+        // console.log(temporalyWord);
+      }
     }
   }
+
+  temporalyResult.push(temporalyWord + angabe2);
+  // console.log(temporalyResult);
 }
 
 result = temporalyResult.join(" ");
