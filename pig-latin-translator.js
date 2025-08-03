@@ -54,8 +54,6 @@ for (let i = 0; i < arrayAngabe.length; i++) {
 
   let isUppercase;
 
-  count = 0;
-
   if (countWord < 2) {
     isUppercase = true;
     countWord += 1;
@@ -76,7 +74,6 @@ for (let i = 0; i < arrayAngabe.length; i++) {
 
     if (isConsonantLetter) {
       firstLetterWord = arrayWord.shift();
-      count += 1;
 
       if (firstLetterWord) {
         for (let i = 0; i < firstLetterWord.length; i++) {
