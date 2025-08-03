@@ -74,16 +74,14 @@ for (let i = 0; i < arrayAngabe.length; i++) {
       ? (isConsonantLetter = true)
       : (isConsonantLetter = false);
 
-    if (count > 1) {
-      isUppercase = false;
-    }
-
     if (isConsonantLetter) {
       firstLetterWord = arrayWord.shift();
       count += 1;
 
       if (firstLetterWord) {
-        arrayWord.push(firstLetterWord[i]);
+        for (let i = 0; i < firstLetterWord.length; i++) {
+          arrayWord.push(firstLetterWord[i]);
+        }
       }
       temporalyWord = arrayWord.join("");
       // console.log(temporalyWord);
@@ -106,3 +104,6 @@ for (let i = 0; i < arrayAngabe.length; i++) {
 result = temporalyResult.join(" ");
 
 console.log(result);
+
+// return;
+process.exit(0);
