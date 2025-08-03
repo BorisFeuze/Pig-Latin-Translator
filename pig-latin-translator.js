@@ -106,3 +106,6 @@ for (let i = 0; i < arrayAngabe.length; i++) {
 result = temporalyResult.join(" ");
 
 console.log(result);
+
+// return;
+process.exit(0);
