@@ -44,7 +44,6 @@ console.log(arrayAngabe);
 let result = [];
 let temporalyWord = [];
 let temporalyResult = [];
-let count = 0;
 let countWord = 0;
 
 for (let i = 0; i < arrayAngabe.length; i++) {
