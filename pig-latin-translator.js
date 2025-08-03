@@ -44,7 +44,6 @@ console.log(arrayAngabe);
 let result = [];
 let temporalyWord = [];
 let temporalyResult = [];
-let count = 0;
 let countWord = 0;
 
 for (let i = 0; i < arrayAngabe.length; i++) {
@@ -53,8 +52,6 @@ for (let i = 0; i < arrayAngabe.length; i++) {
   let firstLetterWord = [];
 
   let isUppercase;
-
-  count = 0;
 
   if (countWord < 2) {
     isUppercase = true;
@@ -74,16 +71,13 @@ for (let i = 0; i < arrayAngabe.length; i++) {
       ? (isConsonantLetter = true)
       : (isConsonantLetter = false);
 
-    if (count > 1) {
-      isUppercase = false;
-    }
-
     if (isConsonantLetter) {
       firstLetterWord = arrayWord.shift();
-      count += 1;
 
       if (firstLetterWord) {
-        arrayWord.push(firstLetterWord[i]);
+        for (let i = 0; i < firstLetterWord.length; i++) {
+          arrayWord.push(firstLetterWord[i]);
+        }
       }
       temporalyWord = arrayWord.join("");
       // console.log(temporalyWord);
